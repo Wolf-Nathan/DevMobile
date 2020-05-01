@@ -3,4 +3,6 @@
     <string name="tab_text_1">Tâches</string>
     <string name="tab_text_2">Ajouter une tâche</string>
     <string name="tab_text_3">Calendrier</string>
+    <string name="placeholder_add_name">Nom de la tâche</string>
+    <string name="placeholder_add_date">Date de la tâche</string>
 </resources>
