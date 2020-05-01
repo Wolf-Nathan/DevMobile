@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
     TabLayout tabs;
     ViewPager viewPager;
     @Override
@@ -29,25 +29,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         tabs = findViewById(R.id.tabs);
-        //tabs.addTab(tabs.newTab().setText("Home"));
-        //tabs.addTab(tabs.newTab().setText("Sport"));
-        //tabs.addTab(tabs.newTab().setText("Movie"));
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = findViewById(R.id.fab);
 
         final MyAdapter adapter = new MyAdapter(this,getSupportFragmentManager(), tabs.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabs));
-
-        /*Button addButton = (Button) findViewById(R.id.add_button);
-        addButton.setOnClickListener(this);*/
-
-        /*final ArrayList<Task> listData = new ArrayList<>();
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        MyListAdapter listAdapter = new MyListAdapter(listData);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(listAdapter);*/
 
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -73,15 +60,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .setAction("Action", null).show();
             }
         });*/
-    }
-
-    @Override
-    public void onClick(View v){
-        EditText txt = findViewById(R.id.text_edit);
-        //TextView view = findViewById(R.id.text_view);
-        //RecyclerView recyclerView = findViewById(R.id.recycler_view);
-
-        //view.setText(txt.getText() + " - " + (new Date().toString()));
-        //recyclerView.addItemDecoration();
     }
 }
