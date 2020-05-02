@@ -6,6 +6,7 @@ public class Task {
     private String name;
     private String date;
     private Boolean process;
+    private String dateEnd;
 
     public Task(String taskName, String taskDate) {
         this.name = taskName;
@@ -36,6 +37,14 @@ public class Task {
 
     public void setProcess (Boolean process) {
         this.process = process;
+    }
+
+    public String getDateEnd () {
+        return this.dateEnd;
+    }
+
+    public void setDateEnd (String dateEnd) {
+        this.dateEnd = dateEnd;
     }
 
 }

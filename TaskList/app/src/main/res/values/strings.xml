@@ -8,4 +8,5 @@
     <string name="button_add">Ajouter la tâche</string>
     <string name="button_process">En cours</string>
     <string name="button_finish">Terminée</string>
+    <string name="placeholder_add_date_end">Date de fin de la tâche</string>
 </resources>

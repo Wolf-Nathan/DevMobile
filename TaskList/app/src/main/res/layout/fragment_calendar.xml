@@ -5,10 +5,11 @@
     tools:context="com.example.tasklist.CalendarFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <CalendarView
+        android:id="@+id/calendar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/tab_text_3" />
+        android:dateTextAppearance="@style/TextAppearance.AppCompat.Large" />
 
 </FrameLayout>

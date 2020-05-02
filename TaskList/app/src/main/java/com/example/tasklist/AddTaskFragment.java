@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AddTaskFragment extends Fragment implements View.OnClickListener {
+public class AddTaskFragment extends Fragment {
 
 
     public AddTaskFragment() {
@@ -40,7 +40,6 @@ public class AddTaskFragment extends Fragment implements View.OnClickListener {
 
         // Button
         Button addButton = (Button) view.findViewById(R.id.add_button);
-        //addButton.setOnClickListener(this);
         addButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -48,31 +47,24 @@ public class AddTaskFragment extends Fragment implements View.OnClickListener {
             {
                 EditText txtName = vip.findViewById(R.id.edit_name);
                 EditText txtDate = vip.findViewById(R.id.edit_date);
+                EditText txtDateEnd = vip.findViewById(R.id.edit_date_end);
 
                 //On envoie les données au fragment au click sur le bouton
                 final Intent intent = new Intent("DATA_ACTION");
                 intent.putExtra("name", txtName.getText().toString());
                 intent.putExtra("date", txtDate.getText().toString());
+                intent.putExtra("dateEnd", txtDateEnd.getText().toString());
                 LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
+                /*final Intent calendarIntent = new Intent("DATA_CALENDAR");
+                calendarIntent.putExtra("name", txtName.getText().toString());
+                calendarIntent.putExtra("date", txtDate.getText().toString());
+                calendarIntent.putExtra("dateEnd", txtDateEnd.getText().toString());
+                LocalBroadcastManager.getInstance(getContext()).sendBroadcast(calendarIntent);*/
                 txtName.setText("");
                 txtDate.setText("");
+                txtDateEnd.setText("");
             }
         });
-    }
-
-    @Override
-    public void onClick(View v){
-        EditText txtName = v.findViewById(R.id.edit_name);
-        EditText txtDate = v.findViewById(R.id.edit_date);
-
-        Task task = new Task(txtName.getText().toString(), txtDate.getText().toString());
-        txtName.setText("");
-        txtDate.setText("");
-        //TextView view = findViewById(R.id.text_view);
-        //RecyclerView recyclerView = findViewById(R.id.recycler_view);
-
-        //view.setText(txt.getText() + " - " + (new Date().toString()));
-        //recyclerView.addItemDecoration();
     }
 
 }

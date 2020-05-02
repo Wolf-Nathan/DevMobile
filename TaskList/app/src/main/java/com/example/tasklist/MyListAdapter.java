@@ -64,6 +64,10 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
         return listdata.size();
     }
 
+    public void MyUpdater() {
+        this.notifyDataSetChanged();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textView;
         public TextView dateView;
