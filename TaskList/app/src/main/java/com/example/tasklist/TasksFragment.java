@@ -78,7 +78,6 @@ private MyListAdapter mAdapter = new MyListAdapter(listData);
                 //etc.
                 String name = intent.getStringExtra("name");
                 String date = intent.getStringExtra("date");
-                Log.d("Nathan", "Putain ça marche");
                 listData.add(new Task(name, date));
                 mAdapter.notifyDataSetChanged();
                 Log.d("Nathan", mAdapter.toString());

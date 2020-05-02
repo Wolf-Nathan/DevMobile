@@ -33,6 +33,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
         //holder.textView.setText(listdata[position].getDescription());
         final Task myListData = listdata.get(position);
         holder.textView.setText(listdata.get(position).getName());
+        holder.dateView.setText(listdata.get(position).getDate());
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,10 +50,12 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textView;
+        public TextView dateView;
         public LinearLayout linearLayout;
         public ViewHolder(View itemView) {
             super(itemView);
             this.textView = (TextView) itemView.findViewById(R.id.fragment_main_item_title);
+            this.dateView = (TextView) itemView.findViewById(R.id.fragment_tasks_item_date);
             linearLayout = (LinearLayout)itemView.findViewById(R.id.linearLayout);
         }
     }
