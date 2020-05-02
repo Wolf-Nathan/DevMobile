@@ -60,7 +60,6 @@ private MyListAdapter mAdapter = new MyListAdapter(listData);
         listData.add(task2);
         //MyListAdapter mAdapter = new MyListAdapter(listData);
         mAdapter.notifyDataSetChanged();
-        Log.d("Nathan", mAdapter.toString());
         // define an adapter
         recyclerView.setAdapter(mAdapter);
     }
@@ -80,7 +79,6 @@ private MyListAdapter mAdapter = new MyListAdapter(listData);
                 String date = intent.getStringExtra("date");
                 listData.add(new Task(name, date));
                 mAdapter.notifyDataSetChanged();
-                Log.d("Nathan", mAdapter.toString());
 
             }
         }

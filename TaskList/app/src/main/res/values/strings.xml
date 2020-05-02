@@ -5,4 +5,7 @@
     <string name="tab_text_3">Calendrier</string>
     <string name="placeholder_add_name">Nom de la tâche</string>
     <string name="placeholder_add_date">Date de la tâche</string>
+    <string name="button_add">Ajouter la tâche</string>
+    <string name="button_process">En cours</string>
+    <string name="button_finish">Terminée</string>
 </resources>
