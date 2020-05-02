@@ -1,6 +1,8 @@
 package com.example.tasklist;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,8 @@ import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class AddTaskFragment extends Fragment implements View.OnClickListener {
 
@@ -45,7 +49,11 @@ public class AddTaskFragment extends Fragment implements View.OnClickListener {
                 EditText txtName = vip.findViewById(R.id.edit_name);
                 EditText txtDate = vip.findViewById(R.id.edit_date);
 
-                Task task = new Task(txtName.getText().toString(), txtDate.getText().toString());
+                //On envoie les données au fragment au click sur le bouton
+                final Intent intent = new Intent("DATA_ACTION");
+                intent.putExtra("name", txtName.getText().toString());
+                intent.putExtra("date", txtDate.getText().toString());
+                LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
                 txtName.setText("");
                 txtDate.setText("");
             }
