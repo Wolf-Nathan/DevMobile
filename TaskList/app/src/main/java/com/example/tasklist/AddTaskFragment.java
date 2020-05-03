@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -48,21 +49,24 @@ public class AddTaskFragment extends Fragment {
                 EditText txtName = vip.findViewById(R.id.edit_name);
                 EditText txtDate = vip.findViewById(R.id.edit_date);
                 EditText txtDateEnd = vip.findViewById(R.id.edit_date_end);
-
-                //On envoie les données au fragment au click sur le bouton
-                final Intent intent = new Intent("DATA_ACTION");
-                intent.putExtra("name", txtName.getText().toString());
-                intent.putExtra("date", txtDate.getText().toString());
-                intent.putExtra("dateEnd", txtDateEnd.getText().toString());
-                LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
-                /*final Intent calendarIntent = new Intent("DATA_CALENDAR");
-                calendarIntent.putExtra("name", txtName.getText().toString());
-                calendarIntent.putExtra("date", txtDate.getText().toString());
-                calendarIntent.putExtra("dateEnd", txtDateEnd.getText().toString());
-                LocalBroadcastManager.getInstance(getContext()).sendBroadcast(calendarIntent);*/
-                txtName.setText("");
-                txtDate.setText("");
-                txtDateEnd.setText("");
+                TextView wrongForm = vip.findViewById(R.id.wrong_form);
+                String name = txtName.getText().toString();
+                String date = txtDate.getText().toString();
+                String dateEnd = txtDate.getText().toString();
+                if(!name.equals("") && !date.equals("") && !dateEnd.equals("")) {
+                    //On envoie les données au fragment au click sur le bouton
+                    final Intent intent = new Intent("DATA_ACTION");
+                    intent.putExtra("name", txtName.getText().toString());
+                    intent.putExtra("date", txtDate.getText().toString());
+                    intent.putExtra("dateEnd", txtDateEnd.getText().toString());
+                    LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
+                    txtName.setText("");
+                    txtDate.setText("");
+                    txtDateEnd.setText("");
+                }
+                else {
+                    wrongForm.setText(R.string.form_wrong_missing);
+                }
             }
         });
     }

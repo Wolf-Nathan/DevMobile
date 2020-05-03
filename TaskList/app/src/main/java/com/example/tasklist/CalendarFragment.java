@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CalendarView;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
@@ -26,6 +28,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class CalendarFragment extends Fragment {
+    private int calendarId;
 
 
     public CalendarFragment() {
@@ -53,10 +56,6 @@ public class CalendarFragment extends Fragment {
         {
             if ("DATA_ACTION".equals(intent.getAction()))
             {
-                //Les données sont passées et peuvent être récupérées via :
-                // intent.getSerializableExtra("DATA_EXTRA");
-                // intent.getIntExtra("DATA_EXTRA", 2);
-                //etc.
                 if(ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED){
                     if(shouldShowRequestPermissionRationale(Manifest.permission.WRITE_CALENDAR)){
 
@@ -67,47 +66,31 @@ public class CalendarFragment extends Fragment {
 
                 }
                 else {
-                Log.d("Nathan", "Calendrier");
-                String name = intent.getStringExtra("name");
-                String date = intent.getStringExtra("date");
-                String end = intent.getStringExtra("dateEnd");
-                    String eventTime="12:00:AM 11:59:PM";
-                    String[] time=eventTime.split(" ");
-                    String[] execttime=time[0].split(":");
-                    String eventStartDate="05 May 2020"+" " + execttime[0]+":"+execttime[1]+":00";
-                    String eventEndDate="08 May 2020"+" " + execttime[0]+":"+execttime[1]+":00";
-                    SimpleDateFormat sfd = new SimpleDateFormat(eventStartDate, Locale.getDefault());
-                    //SimpleDateFormat sfdEnd = new SimpleDateFormat(eventEndDate, Locale.getDefault());
-
-                    //Date jour = new Date(date);
+                    String name = intent.getStringExtra("name");
+                    String date = intent.getStringExtra("date");
+                    String end = intent.getStringExtra("dateEnd");
                     Date start = new Date();
-                    String[] startTab = date.split("/");
-                    start.setDate(02);
-                    start.setMonth(05);
-                    start.setYear(2020);
-                    Date fin = new Date();
-                    fin.setDate(05);
-                    fin.setMonth(05);
-                    fin.setYear(2020);
+                    if(!date.equals("") && !end.equals("")) {
+                        String[] startTab = date.split("/");
+                        start.setDate(Integer.parseInt(startTab[0]));
+                        start.setMonth(Integer.parseInt(startTab[1]));
+                        start.setYear(Integer.parseInt(startTab[2]));
+                        Date fin = new Date();
+                        String[] endTab = end.split("/");
+                        fin.setDate(Integer.parseInt(endTab[0]));
+                        fin.setMonth(Integer.parseInt(endTab[1]));
+                        fin.setYear(Integer.parseInt(endTab[2]));
 
-                ContentResolver cr = getContext().getContentResolver();
-                ContentValues eventValues = new ContentValues();
-                eventValues.put(CalendarContract.Events.TITLE, name);
-                //eventValues.put(CalendarContract.Events.EVENT_LOCATION, "location");
-                //eventValues.put(CalendarContract.Events.DTSTART, jour);
-                    Log.d("Nathan", date);
-                eventValues.put(CalendarContract.Events.DTSTART, start.getTime());
-                eventValues.put("DTSTART", start.getTime());
-                eventValues.put(CalendarContract.Events.DTEND, fin.getTime());
-                eventValues.put(CalendarContract.Events.CALENDAR_ID, "calendar");//Defaul calendar
-                eventValues.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.SHORT);
-                Log.d("Nathan", "Jusque la tout va bien");
-                //try {
-                    Log.d("Nathan", eventValues.getAsString(CalendarContract.Events.DTSTART));
-                    //cr.insert(CalendarContract.Events.CONTENT_URI, eventValues);
-                /*}
-                catch(Exception e){
-                    Log.d("Nathan", "Ca marche pas");*/
+                        ContentResolver cr = getContext().getContentResolver();
+                        ContentValues eventValues = new ContentValues();
+                        eventValues.put(CalendarContract.Events.TITLE, name);
+                        eventValues.put(CalendarContract.Events.DTSTART, start.getTime());
+                        eventValues.put("dtstart", start.getTime());
+                        eventValues.put(CalendarContract.Events.DTEND, fin.getTime());
+                        eventValues.put(CalendarContract.Events.CALENDAR_ID, R.id.calendar);
+                        eventValues.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.SHORT);
+                        cr.insert(CalendarContract.Events.CONTENT_URI, eventValues);
+                    }
             }
 
             }

@@ -41,6 +41,13 @@
             android:layout_height="wrap_content"
             android:text="@string/button_add" />
 
+        <TextView
+            android:id="@+id/wrong_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/form_wrong"
+            android:textColor="#DB1A1A" />
+
     </LinearLayout>
 
 </FrameLayout>

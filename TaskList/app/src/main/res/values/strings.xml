@@ -9,4 +9,6 @@
     <string name="button_process">En cours</string>
     <string name="button_finish">Terminée</string>
     <string name="placeholder_add_date_end">Date de fin de la tâche</string>
+    <string name="form_wrong"> </string>
+    <string name="form_wrong_missing">Merci de remplir tout les champs !</string>
 </resources>
