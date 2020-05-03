@@ -54,15 +54,21 @@ public class AddTaskFragment extends Fragment {
                 String date = txtDate.getText().toString();
                 String dateEnd = txtDate.getText().toString();
                 if(!name.equals("") && !date.equals("") && !dateEnd.equals("")) {
-                    //On envoie les données au fragment au click sur le bouton
-                    final Intent intent = new Intent("DATA_ACTION");
-                    intent.putExtra("name", txtName.getText().toString());
-                    intent.putExtra("date", txtDate.getText().toString());
-                    intent.putExtra("dateEnd", txtDateEnd.getText().toString());
-                    LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
-                    txtName.setText("");
-                    txtDate.setText("");
-                    txtDateEnd.setText("");
+                    String regex = "([0-9]{2})/([0-9]{2})/([0-9]{4})";
+                    if(date.matches(regex) && dateEnd.matches(regex)) {
+                        //On envoie les données au fragment au click sur le bouton
+                        final Intent intent = new Intent("DATA_ACTION");
+                        intent.putExtra("name", name);
+                        intent.putExtra("date", date);
+                        intent.putExtra("dateEnd", dateEnd);
+                        LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
+                        txtName.setText("");
+                        txtDate.setText("");
+                        txtDateEnd.setText("");
+                    }
+                    else {
+                        wrongForm.setText(R.string.form_wrong_date);
+                    }
                 }
                 else {
                     wrongForm.setText(R.string.form_wrong_missing);

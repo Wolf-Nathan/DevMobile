@@ -11,4 +11,5 @@
     <string name="placeholder_add_date_end">Date de fin de la tâche</string>
     <string name="form_wrong"> </string>
     <string name="form_wrong_missing">Merci de remplir tout les champs !</string>
+    <string name="form_wrong_date">Merci d\'indiquer les dates au format DD/MM/AAAA !</string>
 </resources>
