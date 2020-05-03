@@ -52,14 +52,6 @@ private MyListAdapter mAdapter = new MyListAdapter(listData);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-
-        //final ArrayList<Task> listData = new ArrayList<>();
-        Task task1 = new Task("Ménage", "29 Mai 2020");
-        Task task2 = new Task("Chantier", "8 juin 2020");
-        listData.add(task1);
-        listData.add(task2);
-        //MyListAdapter mAdapter = new MyListAdapter(listData);
-        mAdapter.notifyDataSetChanged();
         // define an adapter
         recyclerView.setAdapter(mAdapter);
     }

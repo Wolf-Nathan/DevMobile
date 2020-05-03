@@ -13,10 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder>{
-    //private Task[] listdata;
     private ArrayList<Task> listdata;
 
-    // RecyclerView recyclerView;
     public MyListAdapter(ArrayList<Task> listdata) {
         this.listdata = listdata;
     }
@@ -24,24 +22,15 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View listItem= layoutInflater.inflate(R.layout.fragment_tasks_item, parent, false);
-        //ViewHolder viewHolder = new ViewHolder(listItem);
         return new ViewHolder(listItem);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        //final Task myListData = listdata[position];
-        //holder.textView.setText(listdata[position].getDescription());
         final Task task = listdata.get(position);
         final MyListAdapter adapter = this;
         holder.textView.setText(listdata.get(position).getName());
         holder.dateView.setText(listdata.get(position).getDate());
-        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Toast.makeText(view.getContext(),"click on item: "+myListData.getName(),Toast.LENGTH_LONG).show();
-            }
-        });
         holder.processButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

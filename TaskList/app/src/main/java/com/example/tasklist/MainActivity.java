@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = findViewById(R.id.fab);
 
         final MyAdapter adapter = new MyAdapter(this,getSupportFragmentManager(), tabs.getTabCount());
         viewPager.setAdapter(adapter);
@@ -53,12 +52,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
     }
 }
