@@ -29,7 +29,7 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Contact contact = listdata.get(position);
         final ContactListAdapter adapter = this;
-        //holder.textView.setText(listdata.get(position).getName());
+        holder.textView.setText(listdata.get(position).getName());
     }
 
 
