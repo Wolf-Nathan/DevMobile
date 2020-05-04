@@ -1,5 +1,6 @@
 package com.example.smsbomber;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ public class SmsListAdapter extends RecyclerView.Adapter<SmsListAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View listItem= layoutInflater.inflate(R.layout.fragment_contact_items, parent, false);
+        View listItem= layoutInflater.inflate(R.layout.fragment_sms_items, parent, false);
         return new ViewHolder(listItem);
     }
 
@@ -29,8 +30,8 @@ public class SmsListAdapter extends RecyclerView.Adapter<SmsListAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Sms sms = listdata.get(position);
         final SmsListAdapter adapter = this;
-        holder.textView.setText(listdata.get(position).getAuthor());
-        holder.messageView.setText(listdata.get(position).getMessage());
+        holder.textView.setText(sms.getAuthor());
+        holder.messageView.setText(sms.getMessage());
     }
 
 

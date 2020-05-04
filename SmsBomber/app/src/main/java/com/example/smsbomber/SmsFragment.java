@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -59,36 +60,29 @@ public class SmsFragment extends Fragment {
 
     private void retrieveMessages(ContentResolver contentResolver)
     {
-        Log.d("Nathan", "la");
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED) {
-            if(shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS))
+            if(shouldShowRequestPermissionRationale(Manifest.permission.READ_SMS))
             {
                 //expliquer pourquoi l'autorisation est nécessaire
-                Log.d("Nathan", "mwoh");
             }
             else
             {
-                Log.d("Nathan", "hmmm");
                 this.askForPermission();
             }
         }
         else {
             final Cursor cursor = contentResolver.query(Uri.parse("content://sms/inbox"), null, null, null, null);
-            Log.d("Nathan", "weeee");
             if (cursor == null) {
-                Log.d("Nathan", "Shit aucun message");
                 return;
             }
-            Log.d("Nathan", "Hopla");
             if (cursor.moveToFirst()) {
                 do {
-                    Log.d("Nathan", "Au moins un");
                     String message = cursor.getString(cursor.getColumnIndexOrThrow("body"));
                     String phone = cursor.getString(cursor.getColumnIndexOrThrow("address"));
-                    Sms sms = new Sms(phone, message);
-                    Log.d("Nathan", message);
-                    Log.d("Nathan", phone);
-                    listSms.add(sms);
+                    if(phone != null && message != null) {
+                        Sms sms = new Sms(phone, message);
+                        listSms.add(sms);
+                    }
 
                 } while (cursor.moveToNext());
             }
@@ -98,11 +92,7 @@ public class SmsFragment extends Fragment {
 
     private void askForPermission()
     {
-        this.requestPermissions(new String[] {Manifest.permission.READ_SMS }, 1);
-        /*ActivityCompat.requestPermissions(getActivity(),
-                new String[]{Manifest.permission.READ_SMS},
-                3);*/
-        Log.d("Nathan", "alors");
+        requestPermissions(new String[] {Manifest.permission.READ_SMS }, 3);
     }
 
 

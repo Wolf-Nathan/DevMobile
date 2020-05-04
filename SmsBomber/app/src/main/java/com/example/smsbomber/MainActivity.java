@@ -1,11 +1,13 @@
 package com.example.smsbomber;
 
+import android.Manifest;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -50,5 +52,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        ActivityCompat.requestPermissions(MainActivity.this,
+                new String[]{
+                        Manifest.permission.READ_CONTACTS,
+                        Manifest.permission.READ_SMS,},
+                1);
     }
 }
