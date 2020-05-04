@@ -1,6 +1,7 @@
 package com.example.smsbomber;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = findViewById(R.id.fab);
 
+        Intent i = new Intent(this, SmsService.class);
+        this.startService(i);
+
         final MyAdapter adapter = new MyAdapter(this,getSupportFragmentManager(), 3);
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabs));
@@ -54,9 +58,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ActivityCompat.requestPermissions(MainActivity.this,
-                new String[]{
-                        Manifest.permission.READ_CONTACTS,
-                        Manifest.permission.READ_SMS,},
-                1);
+            new String[]{
+                    Manifest.permission.READ_CONTACTS,
+                    Manifest.permission.READ_SMS,
+                    Manifest.permission.RECEIVE_SMS
+            },
+            1);
     }
 }

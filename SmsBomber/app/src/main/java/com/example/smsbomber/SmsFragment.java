@@ -1,8 +1,11 @@
 package com.example.smsbomber;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -32,6 +35,12 @@ public class SmsFragment extends Fragment {
 
     public SmsFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        LocalBroadcastManager.getInstance(getContext()).registerReceiver(broadcastReceiver, new IntentFilter("SMS_ARRIVED"));
     }
 
     @Override
@@ -75,6 +84,8 @@ public class SmsFragment extends Fragment {
             }
         }
         else {
+            listSms.clear();
+            listSmsAuthor.clear();
             final Cursor cursor = contentResolver.query(Uri.parse("content://sms/inbox"), null, null, null, null);
             if (cursor == null) {
                 return;
@@ -104,6 +115,27 @@ public class SmsFragment extends Fragment {
         final Intent intent = new Intent("DATA_ACTION");
         intent.putExtra("listSmsAuthor", listSmsAuthor);
         LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
+    }
+
+    private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver()
+    {
+        @Override
+        public void onReceive(Context context, Intent intent)
+        {
+            if ("SMS_ARRIVED".equals(intent.getAction()))
+            {
+                retrieveMessages(getContext().getContentResolver());
+                mAdapter.notifyDataSetChanged();
+                sendSmsList();
+            }
+        }
+    };
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(broadcastReceiver);
     }
 
 

@@ -123,7 +123,7 @@ public class ContactFragment extends Fragment {
                     for (int i = 0; i < listContact.size(); i++) {
                         for (int j = 0; j < listSmsAuthor.size(); j++) {
                             if (listContact.get(i).getPhoneNumber().equals(listSmsAuthor.get(j))) {
-                                listContact.get(i).setSmsNumber(listContact.get(i).getSmsNumber() + 1);
+                                listContact.get(i).setSmsNumber(j + 1);
                             }
                         }
 
