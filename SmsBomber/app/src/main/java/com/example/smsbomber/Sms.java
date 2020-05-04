@@ -2,9 +2,11 @@ package com.example.smsbomber;
 
 public class Sms {
     private String author;
+    private String message;
 
-    public Sms (String author){
+    public Sms (String author, String message){
         this.author = author;
+        this.message = message;
     }
 
     public String getAuthor () {
@@ -13,5 +15,13 @@ public class Sms {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getMessage () {
+        return this.message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

@@ -81,7 +81,6 @@ public class ContactFragment extends Fragment {
                     if (hasPhoneNumber > 0) {
                         String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
                         String phone = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                        Log.d("Nathan", phone);
                         Contact contact = new Contact(name, phone);
                         listContact.add(contact);
                     }

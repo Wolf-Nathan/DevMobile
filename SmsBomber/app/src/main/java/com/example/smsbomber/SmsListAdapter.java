@@ -29,7 +29,8 @@ public class SmsListAdapter extends RecyclerView.Adapter<SmsListAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Sms sms = listdata.get(position);
         final SmsListAdapter adapter = this;
-        //holder.textView.setText(listdata.get(position).getAuthor());
+        holder.textView.setText(listdata.get(position).getAuthor());
+        holder.messageView.setText(listdata.get(position).getMessage());
     }
 
 
@@ -40,10 +41,12 @@ public class SmsListAdapter extends RecyclerView.Adapter<SmsListAdapter.ViewHold
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textView;
+        public TextView messageView;
         public LinearLayout linearLayout;
         public ViewHolder(View itemView) {
             super(itemView);
             this.textView = (TextView) itemView.findViewById(R.id.fragment_sms_item);
+            this.messageView = (TextView) itemView.findViewById(R.id.fragment_sms_message);
             linearLayout = (LinearLayout)itemView.findViewById(R.id.linearLayout);
         }
     }
