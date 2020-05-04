@@ -127,6 +127,11 @@ public class SmsFragment extends Fragment {
                 retrieveMessages(getContext().getContentResolver());
                 mAdapter.notifyDataSetChanged();
                 sendSmsList();
+                final Intent intent1 = new Intent("AUTOMATIC_ANSWER");
+                Sms newSms = listSms.get(0);
+                intent1.putExtra("message", newSms.getMessage());
+                intent1.putExtra("phone", newSms.getAuthor());
+                LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent1);
             }
         }
     };

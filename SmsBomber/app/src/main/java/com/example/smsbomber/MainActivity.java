@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
             new String[]{
                     Manifest.permission.READ_CONTACTS,
                     Manifest.permission.READ_SMS,
-                    Manifest.permission.RECEIVE_SMS
+                    Manifest.permission.RECEIVE_SMS,
+                    Manifest.permission.SEND_SMS
             },
             1);
     }
