@@ -3,4 +3,12 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="sms_receive"> SMS reçus</string>
+    <string name="message_receive_placeholder">Message reçu</string>
+    <string name="message_answer_placeholder">Réponse automatique souhaité</string>
+    <string name="add_answer">Ajouter cettre réponse automatique</string>
+    <string name="save_answer">Ajouter une réponse automatique</string>
+    <string name="sms_bomber">Sms Bomber</string>
+    <string name="message_bomber">Message à envoyer</string>
+    <string name="message_bomber_number">Nombre d\'envois</string>
+    <string name="make_bomber">Envoyer</string>
 </resources>

@@ -1,14 +1,82 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.smsbomber.SettingsFragment">
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/tab_text_2" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text="@string/save_answer" />
+
+        <EditText
+            android:id="@+id/message_receive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/message_receive_placeholder"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/message_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/message_answer_placeholder"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/add_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_answer" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text="@string/sms_bomber" />
+
+        <EditText
+            android:id="@+id/message_bomber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/message_bomber"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/message_bomber_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/message_bomber_number"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/make_bomber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/make_bomber" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
