@@ -11,6 +11,9 @@
     <string name="message_bomber">Message à envoyer</string>
     <string name="message_bomber_number">Nombre d\'envois</string>
     <string name="make_bomber">Envoyer</string>
-    <string name="save_answer_list">Réponses automatiques</string>
+    <string name="save_answer_list">Réponses automatiques :</string>
     <string name="message_bomber_phone_number">A quel numéro ?</string>
+    <string name="contact_name">Nom</string>
+    <string name="contact_phone">Numéro</string>
+    <string name="contact_stat">Statistiques</string>
 </resources>
