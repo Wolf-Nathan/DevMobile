@@ -1,7 +1,11 @@
 package com.example.smsbomber;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -13,7 +17,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +32,12 @@ public class ContactFragment extends Fragment {
 
     public ContactFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        LocalBroadcastManager.getInstance(getContext()).registerReceiver(broadcastReceiver, new IntentFilter("DATA_ACTION"));
     }
 
     @Override
@@ -81,6 +93,9 @@ public class ContactFragment extends Fragment {
                     if (hasPhoneNumber > 0) {
                         String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
                         String phone = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                        if (phone.contains(" ")){
+                            phone = phone.replaceAll("\\s", "");
+                        }
                         Contact contact = new Contact(name, phone);
                         listContact.add(contact);
                     }
@@ -94,6 +109,40 @@ public class ContactFragment extends Fragment {
     private void askForPermission()
     {
         requestPermissions(new String[] {Manifest.permission.READ_CONTACTS }, 2);
+    }
+
+    private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver()
+    {
+        @Override
+        public void onReceive(Context context, Intent intent)
+        {
+            if ("DATA_ACTION".equals(intent.getAction()))
+            {
+                try {
+                    ArrayList<String> listSmsAuthor = intent.getStringArrayListExtra("listSmsAuthor");
+                    for (int i = 0; i < listContact.size(); i++) {
+                        for (int j = 0; j < listSmsAuthor.size(); j++) {
+                            if (listContact.get(i).getPhoneNumber().equals(listSmsAuthor.get(j))) {
+                                listContact.get(i).setSmsNumber(listContact.get(i).getSmsNumber() + 1);
+                            }
+                        }
+
+                    }
+                    mAdapter.notifyDataSetChanged();
+                }
+                catch(Exception e){
+                    Log.d("Info", "No SMS Author collect");
+                }
+
+            }
+        }
+    };
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(broadcastReceiver);
     }
 
 

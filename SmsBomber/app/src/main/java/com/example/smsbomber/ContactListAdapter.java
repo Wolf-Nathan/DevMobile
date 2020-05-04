@@ -31,6 +31,7 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         final ContactListAdapter adapter = this;
         holder.textView.setText(listdata.get(position).getName());
         holder.textPhone.setText(listdata.get(position).getPhoneNumber());
+        holder.textSms.setText(listdata.get(position).getSmsNumber() + " SMS reçus");
     }
 
 
@@ -46,11 +47,13 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textView;
         public TextView textPhone;
+        public TextView textSms;
         public LinearLayout linearLayout;
         public ViewHolder(View itemView) {
             super(itemView);
             this.textView = (TextView) itemView.findViewById(R.id.fragment_contact_item);
             this.textPhone = (TextView) itemView.findViewById(R.id.fragment_contact_phone);
+            this.textSms = (TextView) itemView.findViewById(R.id.fragment_contact_sms_number);
             linearLayout = (LinearLayout)itemView.findViewById(R.id.linearLayout);
         }
     }

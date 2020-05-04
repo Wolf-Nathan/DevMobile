@@ -2,6 +2,7 @@ package com.example.smsbomber;
 
 import android.Manifest;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -15,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +28,7 @@ public class SmsFragment extends Fragment {
     private ArrayList<Sms> listSms = new ArrayList<Sms>();
     private SmsListAdapter mAdapter = new SmsListAdapter(listSms);
     private Boolean creation = true;
+    private ArrayList<String> listSmsAuthor = new ArrayList<String>();
 
     public SmsFragment() {
         // Required empty public constructor
@@ -53,6 +56,7 @@ public class SmsFragment extends Fragment {
             mAdapter.notifyDataSetChanged();
             creation = false;
         }
+        this.sendSmsList();
 
         // define an adapter
         recyclerView.setAdapter(mAdapter);
@@ -82,6 +86,7 @@ public class SmsFragment extends Fragment {
                     if(phone != null && message != null) {
                         Sms sms = new Sms(phone, message);
                         listSms.add(sms);
+                        listSmsAuthor.add(phone);
                     }
 
                 } while (cursor.moveToNext());
@@ -93,6 +98,12 @@ public class SmsFragment extends Fragment {
     private void askForPermission()
     {
         requestPermissions(new String[] {Manifest.permission.READ_SMS }, 3);
+    }
+
+    private void sendSmsList(){
+        final Intent intent = new Intent("DATA_ACTION");
+        intent.putExtra("listSmsAuthor", listSmsAuthor);
+        LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
     }
 
 
