@@ -2,9 +2,11 @@ package com.example.smsbomber;
 
 public class Contact {
     private String name;
+    private String phoneNumber;
 
-    public Contact(String name){
+    public Contact(String name, String phoneNumber){
         this.name = name;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getName() {
@@ -13,5 +15,13 @@ public class Contact {
 
     public void setName(String name){
         this.name = name;
+    }
+
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

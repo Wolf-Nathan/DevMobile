@@ -30,6 +30,7 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         final Contact contact = listdata.get(position);
         final ContactListAdapter adapter = this;
         holder.textView.setText(listdata.get(position).getName());
+        holder.textPhone.setText(listdata.get(position).getPhoneNumber());
     }
 
 
@@ -44,10 +45,12 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textView;
+        public TextView textPhone;
         public LinearLayout linearLayout;
         public ViewHolder(View itemView) {
             super(itemView);
             this.textView = (TextView) itemView.findViewById(R.id.fragment_contact_item);
+            this.textPhone = (TextView) itemView.findViewById(R.id.fragment_contact_phone);
             linearLayout = (LinearLayout)itemView.findViewById(R.id.linearLayout);
         }
     }

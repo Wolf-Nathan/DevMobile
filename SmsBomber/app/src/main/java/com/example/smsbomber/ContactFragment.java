@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,16 +68,23 @@ public class ContactFragment extends Fragment {
             }
         }
         else {
-            final Cursor cursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, new String[]{ContactsContract.Data.DISPLAY_NAME, ContactsContract.Data._ID}, null, null, null);
+            final Cursor cursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
+            //final Cursor cursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, new String[]{ContactsContract.Data.DISPLAY_NAME, ContactsContract.Data._ID}, null, null, null);
 
             if (cursor == null) {
                 return;
             }
             if (cursor.moveToFirst()) {
                 do {
-                    String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
-                    Contact contact = new Contact(name);
-                    listContact.add(contact);
+                    final long id = cursor.getLong(cursor.getColumnIndex(ContactsContract.Data._ID));
+                    final int hasPhoneNumber = cursor.getInt(cursor.getColumnIndex(ContactsContract.Data.HAS_PHONE_NUMBER));
+                    if (hasPhoneNumber > 0) {
+                        String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
+                        String phone = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                        Log.d("Nathan", phone);
+                        Contact contact = new Contact(name, phone);
+                        listContact.add(contact);
+                    }
 
                 } while (cursor.moveToNext());
             }
