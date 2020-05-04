@@ -27,9 +27,10 @@ public class AnswerListAdapter extends RecyclerView.Adapter<AnswerListAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        final AutomaticAnswer AutomaticAnswer = listdata.get(position);
+        final AutomaticAnswer answer = listdata.get(position);
         final AnswerListAdapter adapter = this;
-        //holder.textView.setText(listdata.get(position).getAuthor());
+        holder.textView.setText(answer.getReceiveMessage());
+        holder.textAnswer.setText(answer.getAnswer());
     }
 
 
