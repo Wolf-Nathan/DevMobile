@@ -99,13 +99,18 @@ class Timer extends React.Component {
 
     render() {
         return (
-            <View>
-                <View style={ styles.main_container}>
-                    <Text>{ this.state.titre }</Text>
-                    <Button title="Start" onPress={() => this.start()} style={styles.button}/>
-                    <Button title="Stop" onPress={() => this.stop()} style={styles.button}/>
-                    <Button title="Reset" onPress={() => this.reset()} style={styles.button}/>
-
+            <View style={ styles.main_container}>
+                <Text style={styles.title}>{ this.state.titre }</Text>
+                <View style={styles.buttonsContainer}>
+                    <View style={styles.button}>
+                        <Button title="Start" onPress={() => this.start()}/>
+                    </View>
+                    <View style={styles.button}>
+                        <Button title="Stop" onPress={() => this.stop()}/>
+                    </View>
+                    <View style={styles.button}>
+                        <Button title="Reset" onPress={() => this.reset()}/>
+                    </View>
                 </View>
                 <Text style={{color:this.state.color}}>Temps : { this.state.minute } : { this.state.seconde }</Text>
             </View>
@@ -118,13 +123,20 @@ const styles = {
         flex: 1,
         marginTop: 20
     },
+    title: {
+        fontSize: 25,
+        marginTop: 20,
+        marginBottom: 25,
+        alignSelf: 'center',
+    },
+    buttonsContainer: {
+        flexDirection: 'row',
+        alignSelf: 'center'
+    },
     button: {
-        marginLeft: 5,
-        marginRight: 5,
-        height: 50,
-        borderColor: '#000000',
-        borderWidth: 1,
-        paddingLeft: 5
+        width: 80,
+        marginHorizontal: 5,
+        marginBottom: 20
     }
 };
 
