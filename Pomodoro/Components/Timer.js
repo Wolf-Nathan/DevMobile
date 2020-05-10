@@ -7,11 +7,11 @@ class Timer extends React.Component {
         super(props);
         this.state = {
             count : 0,
-            minuteCompteur: 1,
-            minute : '01',
+            minuteCompteur: 30,
+            minute : '30',
             seconde : '00',
-            breakTime: 1,
-            workTime: 1,
+            breakTime: 5,
+            workTime: 30,
             titre: 'Travail',
             color: '#000000',
             start: false,
@@ -109,7 +109,7 @@ class Timer extends React.Component {
 
     onChangeWorkTime(text) {
         var time = parseInt(text);
-        if(text !== "" && time <= 60) {
+        if(text !== "" && time <= 60 && time > 0) {
             if (this.state.titre === 'Travail') {
                 if (time < 10) {
                     this.setState({
@@ -133,6 +133,10 @@ class Timer extends React.Component {
                     workTime: time
                 });
             }
+        }
+        else {
+            Vibration.vibrate([500, 500]);
+            Alert.alert("Merci de rentrer un temps entre 1 et 60 minutes !")
         }
     }
 
@@ -163,6 +167,10 @@ class Timer extends React.Component {
                 });
             }
         }
+        else {
+            Vibration.vibrate([500, 500]);
+            Alert.alert("Merci de rentrer un temps entre 1 et 60 minutes !")
+        }
     }
 
     render() {
@@ -185,12 +193,16 @@ class Timer extends React.Component {
                 <View style={styles.options}>
                     <Text style={styles.optionLabel}>Temps de travail: </Text>
                     <Text style={styles.optionTime}>{this.state.workTime > 1 ? this.state.workTime + " minutes" : this.state.workTime + " minute"}</Text>
-                    <TextInput style={styles.optionSetter} placeholder={"Changer le temps de travail"} onChangeText={text => this.onChangeWorkTime(text)} keyboardType={'numeric'}/>
+                </View>
+                <View style={styles.options}>
+                    <TextInput style={styles.optionSetter} placeholder={"Changer le temps de travail"} onChangeText={text => this.onChangeWorkTime(text)} keyboardType={'numeric'} returnKeyType='done'/>
                 </View>
                 <View style={styles.options}>
                     <Text style={styles.optionLabel}>Temps de pause: </Text>
                     <Text style={styles.optionTime}>{this.state.breakTime > 1 ? this.state.breakTime + " minutes" : this.state.breakTime + " minute"}</Text>
-                    <TextInput style={styles.optionSetter} placeholder={"Changer le temps de pause"} onChangeText={text => this.onChangeBreakTime(text)} keyboardType={'numeric'}/>
+                </View>
+                <View style={styles.options}>
+                    <TextInput style={styles.optionSetter} placeholder={"Changer le temps de pause"} onChangeText={text => this.onChangeBreakTime(text)} keyboardType={'numeric'} returnKeyType='done'/>
                 </View>
             </View>
         );
@@ -239,14 +251,13 @@ const styles = {
         marginRight: 10,
     },
     optionLabel: {
-        marginLeft: 10,
-        marginRight: 10
+        marginRight: 10,
     },
     optionSetter: {
         borderColor: '#000000',
         borderWidth: 1,
         paddingLeft: 5,
-        paddingRight: 5
+        paddingRight: 5,
     }
 };
 
