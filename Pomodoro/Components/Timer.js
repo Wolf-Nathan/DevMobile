@@ -1,6 +1,6 @@
 // Components/Timer.js
 import React from 'react'
-import {Button, Text, View} from "react-native";
+import {Button, Text, View, TextInput} from "react-native";
 
 class Timer extends React.Component {
     constructor(props) {
@@ -83,6 +83,14 @@ class Timer extends React.Component {
                     });
                 }
             }
+            else if (this.state.minuteCompteur >= 10) {
+                this.setState({
+                    seconde: "59",
+                    count: 59,
+                    minuteCompteur: this.state.minuteCompteur - 1,
+                    minute: (this.state.minuteCompteur - 1)
+                });
+            }
             else {
                 this.setState({
                     seconde: "59",
@@ -94,6 +102,64 @@ class Timer extends React.Component {
         }
         else {
             this.setState({count: this.state.count - 1, seconde: (this.state.count - 1) });
+        }
+    }
+
+    onChangeWorkTime(text) {
+        var time = parseInt(text);
+        if(text !== "" && time <= 60) {
+            if (this.state.titre === 'Travail') {
+                if (time < 10) {
+                    this.setState({
+                        workTime: time,
+                        count: 0,
+                        minute: "0" + time,
+                        minuteCompteur: time,
+                        seconde: "00"
+                    });
+                } else {
+                    this.setState({
+                        workTime: time,
+                        count: 0,
+                        minute: time,
+                        minuteCompteur: time,
+                        seconde: "00"
+                    });
+                }
+            } else {
+                this.setState({
+                    workTime: time
+                });
+            }
+        }
+    }
+
+    onChangeBreakTime(text) {
+        var time = parseInt(text);
+        if(text !== "" && time <= 60) {
+            if (this.state.titre === 'Pause') {
+                if (time < 10) {
+                    this.setState({
+                        breakTime: time,
+                        count: 0,
+                        minute: "0" + time,
+                        minuteCompteur: time,
+                        seconde: "00"
+                    });
+                } else {
+                    this.setState({
+                        breakTime: time,
+                        count: 0,
+                        minute: time,
+                        minuteCompteur: time,
+                        seconde: "00"
+                    });
+                }
+            } else {
+                this.setState({
+                    breakTime: time
+                });
+            }
         }
     }
 
@@ -112,7 +178,18 @@ class Timer extends React.Component {
                         <Button title="Reset" onPress={() => this.reset()}/>
                     </View>
                 </View>
-                <Text style={{color:this.state.color}}>Temps : { this.state.minute } : { this.state.seconde }</Text>
+                <Text style={styles.titleTimer}>Temps restant :</Text>
+                <Text style={[styles.timer, {color:this.state.color}]}>{ this.state.minute } : { this.state.seconde }</Text>
+                <View style={styles.options}>
+                    <Text style={styles.optionLabel}>Temps de travail: </Text>
+                    <Text style={styles.optionTime}>{this.state.workTime > 1 ? this.state.workTime + " minutes" : this.state.workTime + " minute"}</Text>
+                    <TextInput style={styles.optionSetter} placeholder={"Changer le temps de travail"} onChangeText={text => this.onChangeWorkTime(text)}/>
+                </View>
+                <View style={styles.options}>
+                    <Text style={styles.optionLabel}>Temps de pause: </Text>
+                    <Text style={styles.optionTime}>{this.state.breakTime > 1 ? this.state.breakTime + " minutes" : this.state.breakTime + " minute"}</Text>
+                    <TextInput style={styles.optionSetter} placeholder={"Changer le temps de pause"} onChangeText={text => this.onChangeBreakTime(text)}/>
+                </View>
             </View>
         );
     }
@@ -121,11 +198,22 @@ class Timer extends React.Component {
 const styles = {
     main_container: {
         flex: 1,
-        marginTop: 20
+        marginTop: 50
     },
     title: {
-        fontSize: 25,
+        fontSize: 75,
         marginTop: 20,
+        marginBottom: 25,
+        alignSelf: 'center',
+    },
+    titleTimer: {
+        fontSize: 25,
+        marginTop: 15,
+        marginBottom: 5,
+        alignSelf: 'center',
+    },
+    timer: {
+        fontSize: 25,
         marginBottom: 25,
         alignSelf: 'center',
     },
@@ -137,6 +225,26 @@ const styles = {
         width: 80,
         marginHorizontal: 5,
         marginBottom: 20
+    },
+    options: {
+        flexDirection: 'row',
+        alignSelf: 'center',
+        marginBottom: 10,
+        paddingLeft: 30,
+        marginRight: 25
+    },
+    optionTime: {
+        marginRight: 10,
+    },
+    optionLabel: {
+        marginLeft: 10,
+        marginRight: 10
+    },
+    optionSetter: {
+        borderColor: '#000000',
+        borderWidth: 1,
+        paddingLeft: 5,
+        paddingRight: 5
     }
 };
 
