@@ -74,14 +74,7 @@ public class SmsFragment extends Fragment {
     private void retrieveMessages(ContentResolver contentResolver)
     {
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED) {
-            if(shouldShowRequestPermissionRationale(Manifest.permission.READ_SMS))
-            {
-                //expliquer pourquoi l'autorisation est nécessaire
-            }
-            else
-            {
-                this.askForPermission();
-            }
+            this.askForPermission();
         }
         else {
             listSms.clear();

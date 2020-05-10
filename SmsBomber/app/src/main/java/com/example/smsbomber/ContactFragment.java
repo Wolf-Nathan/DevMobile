@@ -70,18 +70,10 @@ public class ContactFragment extends Fragment {
     private void retrieveContacts(ContentResolver contentResolver)
     {
         if(ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED){
-            if(shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS))
-            {
-                //expliquer pourquoi l'autorisation est nécessaire
-            }
-            else
-            {
-                this.askForPermission();
-            }
+            this.askForPermission();
         }
         else {
             final Cursor cursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
-            //final Cursor cursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, new String[]{ContactsContract.Data.DISPLAY_NAME, ContactsContract.Data._ID}, null, null, null);
 
             if (cursor == null) {
                 return;
