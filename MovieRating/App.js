@@ -1,14 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import MoviesList from './Components/MoviesList';
+import Navigation from './Navigation/Navigation';
 
 export default class App extends React.Component {
   render() {
     return(
-        <View>
+        /*<View>
           <Button title="Ajouter un film" onPress={() => this.render()} />
           <MoviesList/>
-        </View>
+        </View>*/
+        <Navigation/>
     )
   }
 }

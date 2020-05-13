@@ -1,7 +1,8 @@
 // Components/MovieForm.js
 
 import React from 'react'
-import {Button, Text, View, TextInput, FlatList} from "react-native";
+import {StyleSheet, Button, Text, View, TextInput, FlatList} from "react-native";
+import movies from "../Data/moviesData"
 
 class MovieForm extends React.Component {
     constructor(props) {
@@ -11,11 +12,51 @@ class MovieForm extends React.Component {
             movieTitle: "",
             movieResum: "",
             movieNote: 0,
+            movieDate: ""
         }
     }
 
     validForm() {
         this.setState({ formValid: true });
+    }
+
+    confirmValidForm() {
+        movies.push({
+            id: movies.length + 1,
+            title: this.state.movieTitle,
+            overview: this.state.movieResum,
+            note: this.state.movieNote,
+            release_date: this.state.movieDate
+        });
+        /*const parsed = JSON.stringify(movie);
+        fs.write("../Data/JSON");*/
+
+
+
+
+        this.setState({
+            formValid: false,
+            movieTitle: "",
+            movieResum: "",
+            movieNote: 0,
+            movieDate: ""
+        });
+    }
+
+    onChangeTitle(text) {
+        this.setState({movieTitle: text});
+    }
+
+    onChangeResum(text) {
+        this.setState({movieResum: text});
+    }
+
+    onChangeNote(text) {
+        this.setState({movieNote: text});
+    }
+
+    onChangeDate(text) {
+        this.setState({movieDate: text});
     }
 
     displayForm() {
@@ -24,31 +65,44 @@ class MovieForm extends React.Component {
                 <View>
                     <Text>{this.state.movieTitle}</Text>
                     <Text>{this.state.movieResum}</Text>
+                    <Text>{this.state.movieDate}</Text>
                     <Text>{this.state.movieNote}</Text>
+                    <Button color="#FF0000" title="Valider" onPress={() => this.confirmValidForm() } />
                 </View>
             )
         }
         else {
-            <View>
-                <TextInput placeholder={"Titre du film"} />
-                <TextInput placeholder={"Résumé du film"} />
-                <TextInput placeholder={"Note"} keyboardType={'numeric'} returnKeyType={'done'} />
-                <Button title="Valider" onPress={() => this.validForm() } />
-            </View>
+            return(
+                <View>
+                    <TextInput style={styles.textInput} placeholder={"Titre du film"} onChangeText={text => this.onChangeTitle(text)}/>
+                    <TextInput placeholder={"Résumé du film"} onChangeText={text => this.onChangeResum(text)}/>
+                    <TextInput placeholder={"Date de sortie"} onChangeText={text => this.onChangeDate(text)} />
+                    <TextInput placeholder={"Note"} keyboardType={'numeric'} returnKeyType={'done'} onChangeText={text => this.onChangeNote(text)}/>
+                    <Button color="#000000" title="Ajouter le film" onPress={() => this.validForm() } />
+                </View>
+            )
         }
     }
 
     render() {
         return (
-            <View>
+            <View style={styles.mainForm}>
                 { this.displayForm() }
             </View>
         )
     }
 }
 
-const styles = {
-
-};
+const styles = StyleSheet.create({
+    mainForm: {
+        alignSelf : 'center',
+        marginTop : 25,
+        flex: 1,
+        width: 400
+    },
+    textInput: {
+        alignSelf: 'stretch'
+    }
+});
 
 export default MovieForm;

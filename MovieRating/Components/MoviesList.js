@@ -7,6 +7,17 @@ import movies from "../Data/moviesData";
 
 class MoviesList extends React.Component {
 
+    _storeData = async () => {
+        try {
+            await AsyncStorage.setItem(
+                '@MySuperStore:key',
+                'I like to save it.'
+            );
+        } catch (error) {
+            // Error saving data
+        }
+    };
+
     render() {
         return (
         <View style={styles.container}>

@@ -5,7 +5,7 @@ var data = [
         id:1,
         note:7.2,
         title:"Star Wars VIII - Les derniers Jedi",
-        image:"https://lh3.googleusercontent.com/proxy/sDgVHSlRSU7kl9RgQEJz2S6n_mgKRb-MEVyu7-QvddxYY4Z4MxPNpFa-nnzidcFQ3XIz9Fl0ypOpki6ZDoIQ9Gmx5lcX9COR7Kohx79y6dakPZlRc69lkcEUPrOtU4J0yznzFIJz4A",
+        image:"https://lh3.googleusercontent.com/proxy/f_2ehB1gsLaMrGcfLjfDQhI_w6mVluFH_ofpBonD0FWJdZEDGzucKG_adNWc-NpoufQmsDn7byKrCZ_n3OhDCJfls-tpMid5oTUjMxpt6jKBGw5lj67FTGk17iV8iEZ_EnOMTAPD4A",
         overview:"Nouvel épisode de la saga. Les héros du Réveil de la force rejoignent les figures légendaires de la galaxie dans une aventure épique qui révèle des secrets ancestraux sur la Force et entraîne de choquantes révélations sur le passé…",
         release_date:"2017-12-13"
     },
