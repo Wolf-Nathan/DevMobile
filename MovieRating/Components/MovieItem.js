@@ -8,7 +8,7 @@ class MovieItem extends React.Component {
         const movie = this.props.movie;
         return (
             <View style={styles.main_container}>
-                <Image style={styles.image} source={movie.image} />
+                <Image style={styles.image} source={{ uri: movie.image}} />
                 <View style={styles.content_container}>
                     <View style={styles.header_container}>
                         <Text style={styles.title_text}>{movie.title}</Text>
