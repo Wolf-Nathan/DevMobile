@@ -1,13 +1,14 @@
 // Components/MovieItem.js
 
 import React from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native'
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
 
 class MovieItem extends React.Component {
     render() {
         const movie = this.props.movie;
+        const displayMovieDetails = this.props.displayMovieDetails;
         return (
-            <View style={styles.main_container}>
+            <TouchableOpacity style={styles.main_container} onPress={() => displayMovieDetails(movie.id)}>
                 <Image style={styles.image} source={{ uri: movie.image}} />
                 <View style={styles.content_container}>
                     <View style={styles.header_container}>
@@ -21,7 +22,7 @@ class MovieItem extends React.Component {
                     <Text style={styles.date_text}>{movie.release_date}</Text>
                     </View>
                 </View>
-            </View>
+            </TouchableOpacity>
         )
     }
 }

@@ -7,13 +7,17 @@ import movies from "../Data/moviesData";
 
 class MoviesList extends React.Component {
 
+    displayMoviesDetails = (movieId) => {
+        this.props.navigation.navigate("MovieDetails", {movieId: movieId});
+    };
+
     render() {
         return (
         <View style={styles.container}>
             <FlatList
                 data={movies}
                 keyExtractor={(item) => item.id.toString()}
-                renderItem={({item}) => <MovieItem movie={item}/>}
+                renderItem={({item}) => <MovieItem movie={item} displayMovieDetails={this.displayMoviesDetails}/>}
             />
         </View>
         )
