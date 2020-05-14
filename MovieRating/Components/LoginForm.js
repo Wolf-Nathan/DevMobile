@@ -5,6 +5,10 @@ import {StyleSheet, Button, Text, View, TextInput, FlatList} from "react-native"
 
 class LoginForm extends React.Component {
 
+    login() {
+        this.props.navigation.navigate("TabNavigator");
+    }
+
     render() {
         return(
             <View>
@@ -12,6 +16,7 @@ class LoginForm extends React.Component {
                 <TextInput/>
                 <Text>Mot de passe</Text>
                 <TextInput/>
+                <Button title={"Se connecter"} onPress={() => this.login()} />
             </View>
         )
     }

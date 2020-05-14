@@ -8,6 +8,7 @@ import { createMaterialTopTabNavigator, createBottomTabNavigator } from 'react-n
 import MoviesList from '../Components/MoviesList'
 import MovieForm from '../Components/MovieForm';
 import MovieDetails from "../Components/MovieDetails";
+import LoginForm from "../Components/LoginForm";
 
 
 const ListStackNavigator = createStackNavigator({
@@ -55,6 +56,18 @@ const MoviesTabNavigator = createBottomTabNavigator({
     }
 });
 
+const HomeStackNavigator = createStackNavigator({
+    Login: {
+        screen: LoginForm,
+        navigationOptions: {
+            title: "Se connecter",
+        }
+    },
+    TabNavigator: {
+        screen: MoviesTabNavigator
+    }
+});
+
 const styles = StyleSheet.create({
     icon: {
         width: 30,
@@ -62,4 +75,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default createAppContainer(MoviesTabNavigator)
+export default createAppContainer(HomeStackNavigator)
