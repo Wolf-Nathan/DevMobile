@@ -75,9 +75,9 @@ class MovieForm extends React.Component {
             return(
                 <View>
                     <TextInput style={styles.textInput} placeholder={"Titre du film"} onChangeText={text => this.onChangeTitle(text)}/>
-                    <TextInput placeholder={"Résumé du film"} onChangeText={text => this.onChangeResum(text)}/>
-                    <TextInput placeholder={"Date de sortie"} onChangeText={text => this.onChangeDate(text)} />
-                    <TextInput placeholder={"Note"} keyboardType={'numeric'} returnKeyType={'done'} onChangeText={text => this.onChangeNote(text)}/>
+                    <TextInput style={styles.textInput} placeholder={"Résumé du film"} onChangeText={text => this.onChangeResum(text)}/>
+                    <TextInput style={styles.textInput} placeholder={"Date de sortie"} onChangeText={text => this.onChangeDate(text)} />
+                    <TextInput style={styles.textInput} placeholder={"Note"} keyboardType={'numeric'} returnKeyType={'done'} onChangeText={text => this.onChangeNote(text)}/>
                     <Button color="#000000" title="Ajouter le film" onPress={() => this.validForm() } />
                 </View>
             )
@@ -98,10 +98,13 @@ const styles = StyleSheet.create({
         alignSelf : 'center',
         marginTop : 25,
         flex: 1,
-        width: 400
+        width: 400,
+        height: 190,
+        //backgroundColor: 'gray',
     },
     textInput: {
-        alignSelf: 'stretch'
+        marginLeft: 20,
+        //alignSelf: 'center'
     }
 });
 

@@ -5,7 +5,7 @@ var data = [
         id:1,
         note:7.2,
         title:"Star Wars VIII - Les derniers Jedi",
-        image:"https://lh3.googleusercontent.com/proxy/f_2ehB1gsLaMrGcfLjfDQhI_w6mVluFH_ofpBonD0FWJdZEDGzucKG_adNWc-NpoufQmsDn7byKrCZ_n3OhDCJfls-tpMid5oTUjMxpt6jKBGw5lj67FTGk17iV8iEZ_EnOMTAPD4A",
+        image:"https://i1.wp.com/www.filmspourenfants.net/wp-content/uploads/2018/07/star-wars-8-les-derniers-jedi-a.jpg?fit=555%2C770&ssl=1",
         overview:"Nouvel épisode de la saga. Les héros du Réveil de la force rejoignent les figures légendaires de la galaxie dans une aventure épique qui révèle des secrets ancestraux sur la Force et entraîne de choquantes révélations sur le passé…",
         release_date:"2017-12-13"
     },
