@@ -46,9 +46,14 @@ const MoviesTabNavigator = createBottomTabNavigator({
         List: {
             screen: ListStackNavigator,
             navigationOptions: {
-                title: 'Liste'
+                title: 'Liste',
+                tabBarIcon: () => {
+                    return <Image
+                        source={require('../Images/list.png')}
+                        style={styles.icon}
+                    />
+                }
             },
-
         },
         Form: {
             screen: MovieForm,

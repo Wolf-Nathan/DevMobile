@@ -1,8 +1,9 @@
 // Components/MovieForm.js
 
 import React from 'react'
-import {StyleSheet, Button, Text, View, TextInput, FlatList} from "react-native";
+import {StyleSheet, Button, Text, View, TextInput, Dimensions} from "react-native";
 import movies from "../Data/moviesData"
+
 
 class MovieForm extends React.Component {
     constructor(props) {
@@ -17,7 +18,14 @@ class MovieForm extends React.Component {
     }
 
     validForm() {
-        this.setState({ formValid: true });
+        if (this.state.movieTitle !== "" && this.state.movieResum !== "" && this.state.buttonPress ) {
+            this.setState({ formValid: true });
+        }
+        else if (this.state.buttonPress) {
+            return(
+                <Text style={styles.errorMessage}>Formulaire incorrect !</Text>
+            )
+        }
     }
 
     confirmValidForm() {
@@ -39,7 +47,8 @@ class MovieForm extends React.Component {
             movieTitle: "",
             movieResum: "",
             movieNote: 0,
-            movieDate: ""
+            movieDate: "",
+            movieImage: ""
         });
     }
 
@@ -49,6 +58,10 @@ class MovieForm extends React.Component {
 
     onChangeResum(text) {
         this.setState({movieResum: text});
+    }
+
+    onChangeImage(text) {
+        this.setState({movieImage: text})
     }
 
     onChangeNote(text) {
@@ -63,10 +76,10 @@ class MovieForm extends React.Component {
         if (this.state.formValid) {
             return (
                 <View>
-                    <Text>{this.state.movieTitle}</Text>
-                    <Text>{this.state.movieResum}</Text>
-                    <Text>{this.state.movieDate}</Text>
-                    <Text>{this.state.movieNote}</Text>
+                    <Text style={styles.text}>{this.state.movieTitle}</Text>
+                    <Text style={styles.text}>{this.state.movieResum}</Text>
+                    <Text style={styles.text}>{this.state.movieDate}</Text>
+                    <Text style={styles.text}>{this.state.movieNote}</Text>
                     <Button color="#FF0000" title="Valider" onPress={() => this.confirmValidForm() } />
                 </View>
             )
@@ -75,10 +88,12 @@ class MovieForm extends React.Component {
             return(
                 <View>
                     <TextInput style={styles.textInput} placeholder={"Titre du film"} onChangeText={text => this.onChangeTitle(text)}/>
+                    <TextInput style={styles.textInput} placeholder={"Lien de l'affiche"} onChangeText={text => this.onChangeImage(text)}/>
                     <TextInput style={styles.textInput} placeholder={"Résumé du film"} onChangeText={text => this.onChangeResum(text)}/>
                     <TextInput style={styles.textInput} placeholder={"Date de sortie"} onChangeText={text => this.onChangeDate(text)} />
                     <TextInput style={styles.textInput} placeholder={"Note"} keyboardType={'numeric'} returnKeyType={'done'} onChangeText={text => this.onChangeNote(text)}/>
-                    <Button color="#000000" title="Ajouter le film" onPress={() => this.validForm() } />
+                    <Button color="#000000" title="Ajouter le film" onPress={() => this.setState({buttonPress: true}) } />
+                    {this.validForm()}
                 </View>
             )
         }
@@ -98,13 +113,21 @@ const styles = StyleSheet.create({
         alignSelf : 'center',
         marginTop : 25,
         flex: 1,
-        width: 400,
+        width: Dimensions.get('window').width,
         height: 190,
         //backgroundColor: 'gray',
     },
     textInput: {
         marginLeft: 20,
         //alignSelf: 'center'
+    },
+    text: {
+        marginLeft: 20,
+        //alignSelf: 'center'
+    },
+    errorMessage: {
+        alignSelf: 'center',
+        color: '#FF0000'
     }
 });
 
