@@ -14,6 +14,10 @@ class Search extends React.Component {
         }
     }
 
+    displayMoviesDetails = (movieId) => {
+        this.props.navigation.navigate("MovieDetails", {movieId: movieId});
+    };
+
     research(text) {
         if(text === "") {
             this.setState({ movies: []});

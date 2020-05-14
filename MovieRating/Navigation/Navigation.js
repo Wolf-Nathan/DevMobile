@@ -9,6 +9,7 @@ import MoviesList from '../Components/MoviesList'
 import MovieForm from '../Components/MovieForm';
 import MovieDetails from "../Components/MovieDetails";
 import LoginForm from "../Components/LoginForm";
+import Search from "../Components/Search";
 
 
 const ListStackNavigator = createStackNavigator({
@@ -23,6 +24,21 @@ const ListStackNavigator = createStackNavigator({
        navigationOptions: {
            title: 'Détails du film'
        }
+    }
+});
+
+const SearchStackNavigator = createStackNavigator({
+    Search: {
+        screen: Search,
+        navigationOptions: {
+            title: 'Rechercher un film'
+        }
+    },
+    MovieDetails: {
+        screen: MovieDetails,
+        navigationOptions: {
+            title: 'Détails du film'
+        }
     }
 });
 
@@ -46,6 +62,18 @@ const MoviesTabNavigator = createBottomTabNavigator({
                 }
             }
         },
+        Search: {
+            screen: SearchStackNavigator,
+            navigationOptions: {
+                title: 'Recherche',
+                tabBarIcon: () => {
+                    return <Image
+                        source={require('../Images/loupe.png')}
+                        style={styles.icon}
+                        />
+                }
+            }
+        }
     },
     {
     tabBarOptions: {
@@ -70,8 +98,8 @@ const HomeStackNavigator = createStackNavigator({
 
 const styles = StyleSheet.create({
     icon: {
-        width: 30,
-        height: 30
+        width: 25,
+        height: 25
     }
 });
 
