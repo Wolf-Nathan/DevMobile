@@ -1,7 +1,7 @@
 // Component/MovieDetails.js
 
 import React from 'react'
-import {StyleSheet, Button, Text, View, TextInput, FlatList, Image} from "react-native";
+import {StyleSheet, Text, View, Image} from "react-native";
 import movies from "../Data/moviesData";
 
 class MovieDetails extends React.Component {

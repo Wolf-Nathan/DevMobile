@@ -1,7 +1,7 @@
 // Components/Settings.js
 
 import React from 'react'
-import {StyleSheet, Button, Text, View, TextInput, Dimensions, TouchableOpacity} from "react-native";
+import {StyleSheet, Button, Text, View, Dimensions} from "react-native";
 import loginData from "../Data/loginData";
 
 class Settings extends React.Component {

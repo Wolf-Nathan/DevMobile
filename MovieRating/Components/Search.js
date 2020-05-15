@@ -1,7 +1,7 @@
 // Components/Search.js
 
 import React from 'react'
-import {Button, Text, View, TextInput, FlatList, StyleSheet} from "react-native";
+import {Text, View, TextInput, FlatList, StyleSheet} from "react-native";
 import moviesData from "../Data/moviesData";
 import MovieItem from "./MovieItem";
 

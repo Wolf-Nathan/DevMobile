@@ -1,7 +1,7 @@
 // Components/MoviesList.js
 
 import React from 'react'
-import {Button, Text, View, TextInput, FlatList} from "react-native";
+import {View, FlatList} from "react-native";
 import MovieItem from "./MovieItem";
 import movies from "../Data/moviesData";
 
