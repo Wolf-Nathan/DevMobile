@@ -2,6 +2,7 @@
 
 import React from 'react'
 import {StyleSheet, Button, Text, View, TextInput, Dimensions} from "react-native";
+import loginData from "../Data/loginData"
 
 class LoginForm extends React.Component {
 
@@ -24,6 +25,7 @@ class LoginForm extends React.Component {
 
     login() {
         if (this.state.pseudo !== "" && this.state.password !== "") {
+            loginData.push(this.state.pseudo);
             this.props.navigation.navigate("TabNavigator");
         }
         else {
