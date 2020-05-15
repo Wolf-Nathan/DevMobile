@@ -10,6 +10,7 @@ import MovieForm from '../Components/MovieForm';
 import MovieDetails from "../Components/MovieDetails";
 import LoginForm from "../Components/LoginForm";
 import Search from "../Components/Search";
+import Settings from "../Components/Settings";
 
 
 const ListStackNavigator = createStackNavigator({
@@ -78,7 +79,19 @@ const MoviesTabNavigator = createBottomTabNavigator({
                         />
                 }
             }
-        }
+        },
+    Settings: {
+            screen: Settings,
+            navigationOptions: {
+                title: 'Paramètres',
+                tabBarIcon: () => {
+                    return <Image
+                        source={require('../Images/settings.svg')}
+                        style={styles.icon}
+                        />
+                }
+            }
+    }
     },
     {
     tabBarOptions: {
@@ -97,7 +110,10 @@ const HomeStackNavigator = createStackNavigator({
         }
     },
     TabNavigator: {
-        screen: MoviesTabNavigator
+        screen: MoviesTabNavigator,
+        navigationOptions: {
+            title: "Movie Ratings"
+        }
     }
 });
 

@@ -48,7 +48,9 @@ class LoginForm extends React.Component {
                 <TextInput style={styles.textInput} onChangeText={text => this.onChangePseudo(text)} />
                 <Text style={styles.label}>Mot de passe</Text>
                 <TextInput style={styles.textInput} secureTextEntry={true} onChangeText={text => this.onChangePassword(text)}/>
-                <Button title={"Se connecter"} onPress={() => this.login()} />
+                <View style={styles.button}>
+                    <Button title={"Se connecter"} onPress={() => this.login()} />
+                </View>
                 { this.errorOnLogin() }
             </View>
         )
@@ -74,6 +76,10 @@ const styles = StyleSheet.create({
     errorMessage: {
         color: "#FF0000",
         alignSelf: 'center'
+    },
+    button: {
+        alignSelf: 'center',
+        width: Dimensions.get('window').width / 2
     }
 });
 
