@@ -12,7 +12,7 @@ class MovieForm extends React.Component {
             formValid: false,
             movieTitle: "",
             movieResum: "",
-            movieNote: 0,
+            movieNote: "",
             movieDate: ""
         }
     }
@@ -128,7 +128,7 @@ class MovieForm extends React.Component {
                     </View>
                     <View style={styles.inputContainer}>
                         <Text style={styles.label}>Note :</Text>
-                        <TextInput style={styles.textInput} value={this.state.movieNote} keyboardType={'numeric'} returnKeyType={'next'} onChangeText={text => this.onChangeNote(text)}/>
+                        <TextInput style={styles.textInput} value={this.state.movieNote} keyboardType={'numeric'} returnKeyType={'done'} onChangeText={text => this.onChangeNote(text)}/>
                     </View>
                     <View style={styles.button}>
                         <Button color="#000000" title="Ajouter le film" onPress={() => this.setState({buttonPress: true}) } />

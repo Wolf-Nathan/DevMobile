@@ -3,19 +3,19 @@
 var data = [
     {
         id:1,
-        note:7.2,
-        title:"Star Wars VIII - Les derniers Jedi",
-        image:"https://i1.wp.com/www.filmspourenfants.net/wp-content/uploads/2018/07/star-wars-8-les-derniers-jedi-a.jpg?fit=555%2C770&ssl=1",
-        overview:"Nouvel épisode de la saga. Les héros du Réveil de la force rejoignent les figures légendaires de la galaxie dans une aventure épique qui révèle des secrets ancestraux sur la Force et entraîne de choquantes révélations sur le passé…",
-        release_date:"2017-12-13"
+        note:2.1,
+        title:"Chucky 3",
+        image:"http://fr.web.img2.acsta.net/c_215_290/medias/nmedia/18/78/09/53/19445892.jpg",
+        overview:"Huit ans se sont écoulés depuis qu'Andy a vaincu la terrifiante poupée Chucky, habitée par l'âme du serial-killer Charles Lee Ray. Mais les dirigeants de la fabrique de jouets se décident à relancer le modèle du poupon parlant, permettant la résurrection de la poupée meurtière... ",
+        release_date:"07 avril 2013"
     },
     {
         id:2,
         note:8.1,
-        title:"La Guerre des étoiles",
-        image:"https://fr.web.img5.acsta.net/r_1280_720/medias/nmedia/18/35/41/59/18867130.jpg",
-        overview:"Il y a bien longtemps, dans une galaxie très lointaine... La guerre civile fait rage entre l'Empire galactique et l'Alliance rebelle. Capturée par les troupes de choc de l'Empereur menées par le sombre et impitoyable Dark Vador, la princesse Leia Organa dissimule les plans de l’Étoile Noire, une station spatiale invulnérable, à son droïde R2-D2 avec pour mission de les remettre au Jedi Obi-Wan Kenobi. Accompagné de son fidèle compagnon, le droïde de protocole C-3PO, R2-D2 s'échoue sur la planète Tatooine et termine sa quête chez le jeune Luke Skywalker. Rêvant de devenir pilote mais confiné aux travaux de la ferme, ce dernier se lance à la recherche de ce mystérieux Obi-Wan Kenobi, devenu ermite au cœur des montagnes désertiques de Tatooine...",
-        release_date:"1977-05-25"
+        title:"La Soupe aux choux",
+        image:"http://fr.web.img3.acsta.net/c_215_290/medias/nmedia/18/36/11/21/18478117.jpg",
+        overview:"Le Glaude et le Bombé, deux vieux paysans portés sur la bouteille, vivent retirés de la vie moderne. Une nuit, un extra-terrestre atterrit en soucoupe volante dans le jardin du Glaude. En gage de bienvenue, ce dernier lui offre un peu de sa fameuse soupe aux choux... ",
+        release_date:"2 décembre 1981"
     },
     {
         id: 3,

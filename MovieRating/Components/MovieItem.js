@@ -8,9 +8,9 @@ class MovieItem extends React.Component {
         const movie = this.props.movie;
         const displayMovieDetails = this.props.displayMovieDetails;
         return (
-            <TouchableOpacity style={styles.main_container} onPress={() => displayMovieDetails(movie.id)}>
+            <TouchableOpacity style={styles.mainContainer} onPress={() => displayMovieDetails(movie.id)}>
                 <Image style={styles.image} source={{ uri: movie.image}} />
-                <View style={styles.content_container}>
+                <View style={styles.contentContainer}>
                     <View style={styles.header_container}>
                         <Text style={styles.title_text}>{movie.title}</Text>
                         <Text style={styles.vote_text}>{movie.note}</Text>
@@ -28,10 +28,10 @@ class MovieItem extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    main_container: {
+    mainContainer: {
         height: 190,
         flexDirection: 'row',
-        //backgroundColor: 'gray',
+        //backgroundColor: 'black',
         borderWidth: 1,
         borderColor: 'black'
     },
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         margin: 5,
         backgroundColor: '#000000',
     },
-    content_container: {
+    contentContainer: {
         flex: 1,
         margin: 5
     },

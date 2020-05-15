@@ -16,19 +16,18 @@ class MovieDetails extends React.Component {
         });
 
         return(
-            <View style={styles.main_container}>
-                <Text>{selectMovie.title}</Text>
+            <View style={styles.mainContainer}>
+                <Text style={styles.title}>{selectMovie.title}</Text>
                 <Image style={styles.image} source={{ uri: selectMovie.image}} />
-                <View style={styles.content_container}>
-                    <View style={styles.header_container}>
-                        <Text style={styles.vote_text}>{selectMovie.note}</Text>
-                    </View>
-                    <View style={styles.description_container}>
-                        <Text style={styles.description_text}>{selectMovie.overview}</Text>
-                    </View>
-                    <View style={styles.date_container}>
-                        <Text style={styles.date_text}>{selectMovie.release_date}</Text>
-                    </View>
+                <View style={styles.noteContainer}>
+                    <Text>Note :</Text>
+                    <Text style={styles.note}>{selectMovie.note}</Text>
+                </View>
+                <View style={styles.overviewContainer}>
+                    <Text>{selectMovie.overview}</Text>
+                </View>
+                <View style={styles.dateContainer}>
+                    <Text style={styles.date_text}>{selectMovie.release_date}</Text>
                 </View>
             </View>
         )
@@ -36,15 +35,36 @@ class MovieDetails extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    main_container: {
+    mainContainer: {
         flex: 1,
+        paddingTop: 25,
+    },
+    title: {
+        alignSelf: 'center',
+        fontSize: 25
     },
     image: {
         width: 120,
         height: 180,
         margin: 5,
         backgroundColor: '#000000',
+        alignSelf: 'center'
     },
+    noteContainer: {
+        flexDirection: 'row',
+        alignSelf: 'center'
+    },
+    note: {
+        fontWeight: 'bold',
+        marginLeft: 3
+    },
+    overviewContainer: {
+        padding: 4
+    },
+    dateContainer: {
+        padding: 4,
+        alignItems: 'flex-end'
+    }
 });
 
 export default MovieDetails;
