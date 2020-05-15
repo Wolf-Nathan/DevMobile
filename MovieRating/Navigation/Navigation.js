@@ -1,7 +1,7 @@
 // Navigation/Navigation.js
 
 import React from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, Button } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator, createBottomTabNavigator } from 'react-navigation-tabs';
@@ -23,7 +23,8 @@ const ListStackNavigator = createStackNavigator({
     MovieDetails: {
        screen: MovieDetails,
        navigationOptions: {
-           title: 'Détails du film'
+           title: 'Détails du film',
+           //headerLeft: ({ goBack }) => { return (<Button title={"<"} color={"#000FFF"} onPress={() => { goBack() } }/>) }
        }
     }
 });
@@ -86,7 +87,7 @@ const MoviesTabNavigator = createBottomTabNavigator({
                 title: 'Paramètres',
                 tabBarIcon: () => {
                     return <Image
-                        source={require('../Images/settings.svg')}
+                        source={require('../Images/settings.png')}
                         style={styles.icon}
                         />
                 }
@@ -112,7 +113,8 @@ const HomeStackNavigator = createStackNavigator({
     TabNavigator: {
         screen: MoviesTabNavigator,
         navigationOptions: {
-            title: "Movie Ratings"
+            title: "Movie Ratings",
+            headerLeft: null
         }
     }
 });

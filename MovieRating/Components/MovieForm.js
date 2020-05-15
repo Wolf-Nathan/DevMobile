@@ -87,11 +87,15 @@ class MovieForm extends React.Component {
                         <Text style={styles.text}>{this.state.movieTitle}</Text>
                     </View>
                     <View style={styles.inputContainer}>
-                        <Text style={styles.label}>Affiche :</Text>
-                        <Text style={styles.text}>{this.state.movieResum}</Text>
+                        <Text style={styles.label}>Lien de l'affiche :</Text>
+                        <Text style={styles.text}>{this.state.movieImage}</Text>
                     </View>
                     <View style={styles.inputContainer}>
                         <Text style={styles.label}>Résumé :</Text>
+                        <Text style={styles.text}>{this.state.movieResum}</Text>
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <Text style={styles.label}>Date :</Text>
                         <Text style={styles.text}>{this.state.movieDate}</Text>
                     </View>
                     <View style={styles.inputContainer}>
