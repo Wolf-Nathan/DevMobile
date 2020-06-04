@@ -17,9 +17,9 @@ class TrackItem extends React.Component {
 
     render() {
         const track = this.props.track;
-        //const displayMovieDetails = this.props.displayMovieDetails;
+        const displayTrackDetails = this.props.displayTrackDetails;
         return (
-            <TouchableOpacity onPress={() => console.log('hey')}>
+            <TouchableOpacity onPress={() => displayTrackDetails(track.id)}>
                 {this.imageShow(track)}
                 <View>
                     <View>

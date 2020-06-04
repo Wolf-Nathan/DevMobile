@@ -17,6 +17,10 @@ class Search extends React.Component {
 
     }
 
+    displayTrackDetails = (trackId) => {
+        this.props.navigation.navigate("TrackDetails", {trackId: trackId});
+    };
+
     async changeText(text, author) {
         if (author){
             if (text !== "") {
@@ -79,7 +83,7 @@ class Search extends React.Component {
                 <FlatList
                     data={this.state.list}
                     keyExtractor={(item) => item.trackId}
-                    renderItem={({item}) => <TrackItem track={item} />}
+                    renderItem={({item}) => <TrackItem track={item} displayTrackDetails={this.displayTrackDetails}/>}
                 />
             </View>
         )
